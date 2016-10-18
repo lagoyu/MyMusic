@@ -20,25 +20,26 @@ namespace MyMusic
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Fill Combobox from
-            //cmbxSongID.Items.Clear();
+            // View used by Combobox
+
             // DataView musicView = new DataView(myMusicDataSet.Tables["MyMusic"], " ","ID, [Song Title]",DataViewRowState.CurrentRows);
             DataView comboView = new DataView(myMusicDataSet.Tables["MyMusic"]);
             comboView.Sort = "Artist, [Song Title]";
-            cmbxSongID.DataSource = comboView;
+
             cmbxSongID.DisplayMember = "Song Title";
             cmbxSongID.ValueMember = "Id";
-            cmbxSongID.ResetBindings();
+            cmbxSongID.DataSource = comboView;
 
+            // cmbxSongID.ResetBindings();
+            
+            // View used by GridView
             DataView gridView = new DataView(myMusicDataSet.Tables["MyMusic"]);
             gridView.Sort = "Artist, [Song Title]";
             dataGridView1.DataSource = gridView;
 
             
-            // TODO: This line of code loads data into the 'myMusicDataSet.MyMusic' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'myMusicDataSet.MyMusic' table which is used by both views. You can move, or remove it, as needed.
             this.myMusicTableAdapter.Fill(this.myMusicDataSet.MyMusic);
-
-
 
         }
 
