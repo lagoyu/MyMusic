@@ -63,7 +63,7 @@ namespace MyMusic
             DataRow row = myMusicDataSet.MyMusic.Rows.Find(cmbxSongID.SelectedValue);
             tbArtist.Text = row["Artist"].ToString();
 
-            // TODO: Update the selected Artist in the dataset - Not working yet!
+            // TODO: Update the Chosen comment in the dataset - Not working yet!
             //DataRow[] musicRow = myMusicDataSet.Tables["MyMusic"].Select("Id = " + songID);
             //musicRow[0]["Comment"] = "You picked this one!";
             //myMusicDataSet.MyMusic[songID].Comment = "You picked this one!";
