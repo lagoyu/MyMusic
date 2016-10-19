@@ -79,6 +79,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyMusicDataSet.cs">
+      <DependentUpon>MyMusicDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyMusicDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,7 +113,9 @@
     <None Include="MyMusicDataSet.xss">
       <DependentUpon>MyMusicDataSet.xsd</DependentUpon>
     </None>
-    <None Include="MyMusic_TemporaryKey.pfx" />
+    <None Include="MyMusic_TemporaryKey.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

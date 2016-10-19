@@ -69,7 +69,28 @@ SELECT Id, [Song Title], Artist, [Release Date], Comment FROM MyMusic WHERE (Id 
               <Mapping SourceColumn="Release Date" DataSetColumn="Release Date" />
               <Mapping SourceColumn="Comment" DataSetColumn="Comment" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="MyMusicConnectionString (Settings)" DbObjectName="dbo.MyMusic" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        Id, [Song Title], Artist, [Release Date], Comment
+FROM            MyMusic
+ORDER BY Artist, [Song Title]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="MyMusicConnectionString (Settings)" DbObjectName="dbo.MyMusic" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByArtistSong" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillByArtistSong" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillByArtistSong">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        Id, [Song Title], Artist, [Release Date], Comment
+FROM            MyMusic
+ORDER BY Artist, [Song Title]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -79,7 +100,7 @@ SELECT Id, [Song Title], Artist, [Release Date], Comment FROM MyMusic WHERE (Id 
   <xs:element name="MyMusicDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="MyMusicDataSet" msprop:Generator_UserDSName="MyMusicDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MyMusic" msprop:Generator_TableClassName="MyMusicDataTable" msprop:Generator_TableVarName="tableMyMusic" msprop:Generator_TablePropName="MyMusic" msprop:Generator_RowDeletingName="MyMusicRowDeleting" msprop:Generator_RowChangingName="MyMusicRowChanging" msprop:Generator_RowEvHandlerName="MyMusicRowChangeEventHandler" msprop:Generator_RowDeletedName="MyMusicRowDeleted" msprop:Generator_UserTableName="MyMusic" msprop:Generator_RowChangedName="MyMusicRowChanged" msprop:Generator_RowEvArgName="MyMusicRowChangeEvent" msprop:Generator_RowClassName="MyMusicRow">
+        <xs:element name="MyMusic" msprop:Generator_TableClassName="MyMusicDataTable" msprop:Generator_TableVarName="tableMyMusic" msprop:Generator_RowChangedName="MyMusicRowChanged" msprop:Generator_TablePropName="MyMusic" msprop:Generator_RowDeletingName="MyMusicRowDeleting" msprop:Generator_RowChangingName="MyMusicRowChanging" msprop:Generator_RowEvHandlerName="MyMusicRowChangeEventHandler" msprop:Generator_RowDeletedName="MyMusicRowDeleted" msprop:Generator_RowClassName="MyMusicRow" msprop:Generator_UserTableName="MyMusic" msprop:Generator_RowEvArgName="MyMusicRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
