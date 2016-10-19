@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.myMusicBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.myMusicDataSet = new MyMusic.MyMusicDataSet();
             this.btnSaveAll = new System.Windows.Forms.Button();
             this.cmbxSongID = new System.Windows.Forms.ComboBox();
@@ -39,14 +39,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbSongID = new System.Windows.Forms.TextBox();
             this.myMusicTableAdapter = new MyMusic.MyMusicDataSetTableAdapters.MyMusicTableAdapter();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myMusicBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myMusicDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(32, 40);
@@ -54,10 +55,11 @@
             this.dataGridView1.Size = new System.Drawing.Size(677, 285);
             this.dataGridView1.TabIndex = 0;
             // 
-            // myMusicBindingSource
+            // gridBindingSource
             // 
-            this.myMusicBindingSource.DataMember = "MyMusic";
-            this.myMusicBindingSource.DataSource = this.myMusicDataSet;
+            this.gridBindingSource.DataMember = "MyMusic";
+            this.gridBindingSource.DataSource = this.myMusicDataSet;
+            this.gridBindingSource.Sort = "Artist, [Song Title]";
             // 
             // myMusicDataSet
             // 
@@ -78,9 +80,10 @@
             // 
             this.cmbxSongID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbxSongID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbxSongID.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.myMusicBindingSource, "Song Title", true));
-            this.cmbxSongID.DataSource = this.myMusicBindingSource;
+            this.cmbxSongID.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.gridBindingSource, "Song Title", true));
+            this.cmbxSongID.DataSource = this.bindingSource1;
             this.cmbxSongID.DisplayMember = "Song Title";
+            this.cmbxSongID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbxSongID.FormattingEnabled = true;
             this.cmbxSongID.Location = new System.Drawing.Point(159, 348);
             this.cmbxSongID.Name = "cmbxSongID";
@@ -125,6 +128,12 @@
             // 
             this.myMusicTableAdapter.ClearBeforeFill = true;
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "MyMusic";
+            this.bindingSource1.DataSource = this.myMusicDataSet;
+            this.bindingSource1.Sort = "Song Title";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,8 +150,9 @@
             this.Text = "My Music";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myMusicBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myMusicDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,7 +162,7 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private MyMusicDataSet myMusicDataSet;
-        private System.Windows.Forms.BindingSource myMusicBindingSource;
+        private System.Windows.Forms.BindingSource gridBindingSource;
         private MyMusicDataSetTableAdapters.MyMusicTableAdapter myMusicTableAdapter;
         private System.Windows.Forms.Button btnSaveAll;
         private System.Windows.Forms.ComboBox cmbxSongID;
@@ -160,6 +170,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbSongID;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

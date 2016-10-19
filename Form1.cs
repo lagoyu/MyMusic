@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace MyMusic
 {
@@ -20,14 +21,19 @@ namespace MyMusic
         }
 
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            // This line of code loads data into the 'myMusicDataSet.MyMusic' table which is used by both views. 
+            this.myMusicTableAdapter.Fill(this.myMusicDataSet.MyMusic);
 
             DataView comboView = new DataView(myMusicDataSet.Tables["MyMusic"]);
             DataView gridView = new DataView(myMusicDataSet.Tables["MyMusic"]);
             
-            
+            //View used by GridView is sorted by Artist then Song Title
+            gridView.Sort = "Artist, [Song Title]";
+            dataGridView1.DataSource = gridView;
+            //dataGridView1.ReadOnly = true;
+
             // View used by cmbxSongID is sorted by Song title
             comboView.Sort = "[Song Title]";
             cmbxSongID.DataSource = comboView;
@@ -36,14 +42,6 @@ namespace MyMusic
             cmbxSongID.DisplayMember = "Song Title";
             cmbxSongID.ValueMember = "Id";
             
-            // View used by GridView is sorted by Artist then Song Title
-            gridView.Sort = "Artist, [Song Title]";
-            dataGridView1.DataSource = gridView;
-
-            // This line of code loads data into the 'myMusicDataSet.MyMusic' table which is used by both views. 
-            this.myMusicTableAdapter.Fill(this.myMusicDataSet.MyMusic);
-
-
         }
 
         private void btnSaveAll_Click(object sender, EventArgs e)
